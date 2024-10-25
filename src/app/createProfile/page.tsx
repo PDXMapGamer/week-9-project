@@ -5,3 +5,6 @@
 // todo SQL query to insert user's data into the database.
 // todo redirect user to the homepage once they submit the profile form.
 // todo suggestion: Try/Catch for SQL query.
+export default function CreateProfile() {
+  return <></>;
+}
