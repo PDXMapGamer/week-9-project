@@ -1,4 +1,5 @@
 import { UserButton, SignInButton, SignUpButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import Link from "next/link";
 // import { auth } from "@clerk/nextjs/server";
 
 export default async function NavBar() {
@@ -7,6 +8,12 @@ export default async function NavBar() {
     <header>
       <SignedIn>
         <UserButton />
+        <Link className="ml-4" href={`/user`}>
+          Profile
+        </Link>
+        <Link className="ml-4" href={`/homepage`}>
+          Homepage
+        </Link>
       </SignedIn>
       <SignedOut>
         <span className="mr-4">

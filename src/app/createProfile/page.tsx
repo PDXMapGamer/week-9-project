@@ -12,10 +12,15 @@ export default async function CreateProfile() {
   const user = await currentUser();
   const username = user?.username;
   const userID = user?.id;
+  const query = await db.query(`SELECT clerk_id FROM users WHERE clerk_id = $1`, [userID]);
+  const queryResult = query.rows[0]?.clerk_id;
+  if (!queryResult) {
+    db.query(`INSERT INTO users(clerk_id, username) VALUES($1, $2)`, [userID, username]);
+  }
+
   return (
     <>
-      <p>Hello, {username}</p>
-      <p>Your clark id is {userID}</p>
+      <p>Hello {username}, Welcome to mY social media. Y are you here?</p>
     </>
   );
 }
