@@ -27,7 +27,9 @@ export default async function EditBio() {
           defaultValue={bio}
           placeholder="Please enter a bio for yourself :)"
         ></textarea>
-        <button type="submit">Update Bio</button>
+        <button className="ml-4" type="submit">
+          Update Bio
+        </button>
       </form>
     </>
   );
