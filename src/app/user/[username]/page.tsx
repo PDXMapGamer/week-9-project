@@ -16,12 +16,20 @@ export default async function UserProfilePage({ params }: PageProps) {
   if (!userExist) {
     notFound();
   }
+  const userBio = await db.query(`SELECT bio FROM users WHERE  username = '${username}'`);
+  let bio = userBio?.rows[0].bio;
+  if (!bio) {
+    bio = "This user doesnt have a bio";
+  }
   const query = await db.query(`SELECT * FROM posts
     JOIN users ON posts.user_id = users.clerk_id WHERE username = '${username}';`); //For some reason when using $1 it seperates onto differant lines and not work
   const posts = query.rows;
+
   return (
     <>
       <div className="bg-gray-500">
+        <h2>{username}&apos;s Bio:</h2>
+        <h3>{bio}</h3>
         <h2>{username}&apos;s Timeline:</h2>
         {posts.map((post) => (
           <div className="m-2" key={post.id}>
