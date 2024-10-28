@@ -7,6 +7,7 @@ export default function DeletePostButton(props: { username: string | null | unde
   async function deletePost() {
     console.log("Post deleted");
   }
+  //todo when user confirms, delete the post
   return (
     <div>
       <AlertDialog.Root>
